@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*编辑订单*/
+.dialog-FormBtn01 button{margin:0;}
+
+/*=====编号设置=====*/
+.Member-add{padding:0px 15px 20px 5px;}
+.Member-add .btn{margin:10px 0 0 170px;}
+.Member-add .btn button{margin:0 5px;}
+.Member-add .btn .submit,
+.Member-add .btn .reset{background:url(/images/mcm-main.png) no-repeat;height:26px;line-height:26px;border:0;}
+.Member-add .btn .submit{background-position:-406px -180px;width:101px;color:#fff;}
+.Member-add .btn .submit:hover{background-position:-406px -206px;width:101px;color:#fff;}
+.Member-add .btn .reset{background-position:-507px -180px;width:86px;color:#000;}
+.Member-add .btn .reset:hover{background-position:-507px -206px;width:86px;color:#000;}
+.Member-add table .txtalign{text-align:right;width:150px;}
+.Member-add table td .tips02{background:url(/images/mcm-icon.png) no-repeat;}
+.Member-add table td .tips02-1,
+.Member-add table td .tips02-2{position:relative;z-index:100;}
+.Member-add table td .tips02{background-position:0px -1215px;width:40px;height:28px;display:block;float:left;}
+.Member-add table td .tips02-detailBg{background:#fdfad9;border:1px solid #ffb400;padding:10px;width:240px;height:auto;position:absolute;z-index:100;}
+.Member-add table td .tips02-detail01{position:absolute;top:25px;left:195px;}
+.Member-add table td .tips02-detail02{position:absolute;top:25px;left:245px;}
+.Member-add table td .Card{border:1px solid #c3c3c3;background:#f0f0f0;text-align:center;color:#555;float:left;margin-top:10px;}
+
+/*=====订单下载=====*/
+.order-down .shop{margin:20px 0;overflow:hidden;}
+.order-down .shop li{width:200px;float:left;padding:5px;}
+.order-down .shop li input{margin-right:5px;}
+.order-down .shop li input,
+.order-down .shop li label{vertical-align:middle;}
+.order-down .status{margin:20px;overflow:hidden;}
+.order-down .status li{padding:5px;}
+
+/*==============================2013.05.16==============================*/
+/*=====订单信息=====*/
+.addpro-title{font-size:12px;font-weight:bold;color:#666;}
+.addgifts-title{font-family:"微软雅黑";font-size:14px;font-weight:bold;color:#333;}
+.line-b-1{border-bottom:1px solid #ccc;}
+.delay-day{margin:10px 0;}
+.delay-day li{margin:5px 0;}
+.delay-day li input{margin-right:5px;}
+.delay-day li input,
+.delay-day li label{vertical-align:middle;}
+.print li{padding:20px;border-bottom:1px solid #e3e3e3;}
+.print li img{vertical-align:middle;}
+.print li i{display:inline-block;width:70px;height:70px;margin:45px;}
+.print li.complete i{background:url(../images/mcm-icon-2013.png) 0 -330px no-repeat;}
+.print li.ing i{background:url(../images/89.gif) no-repeat;}
+/*=====快递单=====*/
+.set-templete .img{width:560px;height:300px;border:1px solid #dcdcdc;margin-bottom:10px;}
+.set-templete td{vertical-align:top;}
+.set-templete td h2{font-weight:bold;}
+.set-templete td ul{float:left;margin-right:10px;}
+.set-templete td li{margin:5px 0;}
+.set-templete td input{margin:0 5px 0 0;}
+.set-templete td label{color:#666;}
+/*=====订单详情=====*/
+.pro-info{margin:5px;}
+.pro-info-img{float:left;margin-right:15px;}
+.pro-info-img img{width:55px;height:55px;border:1px solid #e9e9e9;}
+.pro-info-text{float:left;}
+.pro-info-text .name{display:block;width:100%;height:40px;overflow:hidden;}
+.pro-info-text .info{display:block;}
+.amountpay{padding:20px 0;}
+.amountpay li{text-align:right;height:20px;line-height:20px;}
+.dailyrecord{overflow:hidden;}
+.dailyrecord li{clear:both;}

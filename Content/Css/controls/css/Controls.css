@@ -1,0 +1,172 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*===========================================开关================================================*/
+.customer-onoff{width:108px;}
+.cb-enable, .cb-disable, .cb-enable span, .cb-disable span {background: url("../images/form_onoff.png") repeat-x;display:block;float:left;}
+.cb-enable span, .cb-disable span {background-repeat: no-repeat;display:block;font-weight:bold;line-height:24px;}
+.cb-enable span {background-position:left -72px;padding:0 10px;}
+.cb-disable span {background-position:right -144px;padding:0 10px;}
+.cb-disable.selected {background-position:0 -24px;}
+.cb-disable.selected span {background-position:right -168px;color:#FFFFFF}
+.cb-enable.selected {background-position:0 -48px;}
+.cb-enable.selected span {background-position:left -120px;color:#FFFFFF;}
+.onoff label {cursor:pointer;margin:0;}
+.onoff {display:block;overflow:hidden;}
+.onoff input[type="radio"] {left:-999px;position:absolute;}
+
+
+/*===========================================弹层================================================*/
+/* 背景 */
+.ui-layer-bg {
+    background:#000;
+    filter:alpha(opacity=50);  
+	-moz-opacity:0.5;  
+	-khtml-opacity:0.5;  
+	opacity: 0.5;
+    position:fixed;
+	height:100%;
+	width:100%;
+	z-index:999;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+}
+
+/* 浮动层样式 */
+.ui-layer{
+	position:fixed;
+	top:50%;
+	left:50%;
+	background:#fff;
+	border: 1px solid #aaa;
+    box-shadow:0 0 5px rgba(201, 201, 201, 0.9);
+	z-index:1000;
+	}
+.ui-layer-box {
+	position:relative;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+.ui-layer-title {
+    background:#f2f2f2;
+    height:35px;
+    line-height:35px;
+    margin: 1px;
+    text-indent:10px;
+	border-bottom:1px #ddd solid;
+}
+.ui-layer-title h2 {
+    color:#333;
+	font-weight:bold;
+    font-size:14px;
+}
+.ui-layer-content{overflow:auto;font-size:12px;color:#555;}
+.ui-layer-content .box-content{margin:20px 25px;}
+.ui-layer-content iframe{border:0;width:100%;height:100%;left:0;right:0;top:0;bottom:0;}
+
+.ui-layer-actionbar{position:absolute;width:100%;height:45px;bottom:0;background:#f5f5f5;border-top:1px #ddd solid;text-align:center;}
+.ui-layer-actionbar button{margin:9px 2px;padding:3px 15px;cursor:pointer;}
+.ui-layer-close a{
+    height:17px;
+    position:absolute;
+    right:5px;
+    top:7px;
+    width: 17px;
+	background:url(../images/windows-btn.png) no-repeat -66px -59px;
+}
+.ui-layer-close a:hover{background:url(../images/windows-btn.png) no-repeat -66px -31px;}
+
+
+.ui-layer .ui-box-se,.ui-layer .ui-layer-title,.ui-layer .ui-layer-actionbar{display:none;}
+
+.ui-loading{width:80px;
+height:40px;
+left:50%;
+top:50%;
+margin:-20px 0 0 -40px;
+position:absolute;
+text-align: left;
+text-indent: -999em;
+overflow: hidden;
+background: url(../images/loading.gif) no-repeat center center;
+}
+
+/* 功能开启项目 */
+.ui-title .ui-layer-content{top:38px;left:0;right:0;bottom:0;}/*内容区*/
+.ui-title .ui-layer-title{display:block;}/*标题*/
+.ui-title .ui-loading{margin-top:-1px;}/*Loading位置*/
+.ui-drag .ui-layer-title{cursor:move;}/*拖动对话框*/
+.ui-resize .ui-layer-se{cursor:se-resize;float:left;display:block;position:absolute;right:0;bottom:0;width:10px;height:10px;z-index:10;}/*调整大小*/
+.ui-button .ui-layer-actionbar{display:block;}
+.ui-button .ui-loading{margin-top:-42px;}
+
+/* 按钮 */
+
+.submit-btn button,
+.cancel-btn button{width:90px;height:32px;margin:6px 2px;cursor:pointer;}
+.submit-btn{background:#3a8ada;color:#fff;border:1px solid #2875c1;}
+.submit-btn:hover{background:#4e99e3;border:1px solid #206cb6;}
+.cancel-btn{background:#edecec;color:#333;border:1px solid #dddcdc;}
+.cancel-btn:hover{background:#f2f0f0;border:1px solid #d0cfcf;}
+
+
+/*===========================================图片上传================================================*/
+.con-picup{position:relative;float:left;}
+.con-picup li{float:left;margin:0 5px;width:95px;position:relative;}
+.con-picup-img{float:left;width:95px;height:95px;border:1px solid #ddd;margin-bottom:5px;background:url(../images/pic-blank.png);}
+.con-picup-img:hover{border:1px solid #ccc;}
+.con-picup-img img{width:91px;height:91px;border:2px solid #fff;}
+.con-picup-img:hover img{border:2px solid #398de1;}
+.con-picup-btn{position:relative;float:left;width:97px;height:25px;cursor:pointer;overflow:hidden;}
+.con-picup-btn:hover button{border:1px solid #ccc;background:#f9f9f9;}
+.con-picup li button{border:1px solid #ddd;width:97px;height:25px;background:#f5f5f5;text-align:center;margin:0;color:#333;position:absolute;z-index:1;}
+.con-picup li input[type="file"]{position:absolute;z-index:2;filter:alpha(Opacity=0);-moz-opacity:0;opacity:0;right:0;cursor:pointer;}
+.con-picup-tip{position:absolute;padding:3px 10px;color:#fff;}
+.con-tip-correct{background:#559304;top:40px;left:15px;}
+.con-tip-error{background:#e00000;left:0;right:-1px;bottom:30px;word-wrap:break-word;}
+
+/*===========================================相册================================================*/
+.con-album{float:left;width:132px;overflow:hidden;}
+.con-album .album-pic-b{float:left;clear:both;display:block;margin-bottom:5px;}
+.con-album .album-pic-b img{width:128px;height:128px;}
+.con-album .album-pic-s{width:140px;overflow:hidden;}
+.con-album .album-pic-s li{float:left;margin-right:3px;}
+.con-album .album-pic-s img{width:20px;height:20px;}
+.con-album img:hover{border:2px solid #398de1;padding:0;}
+.con-album img{border:1px solid #ddd;padding:1px;cursor:pointer;}
+
+/*===========================================级别================================================*/
+.level > ul{margin:0 20px 0 0;}
+.level ul li ul,
+.level ul li ul li ul,
+.level ul li ul li ul li ul{margin:5px 20px 5px 30px;}
+.level i,
+.level input,
+.level label{vertical-align:middle;margin-right:5px;}
+.level i{color:#828282;}
+.level label{color:#333;}
+
+
+
+/*===========================================树图标================================================*/
+.space,.space-on,.space-off{width:20px;height:20px;float:left;}
+.space-on,.space-off,.space-on:hover,.space-off:hover{background:url("../images/icon.png") no-repeat;cursor:pointer;}
+.space-on{background-position:-420px -382px;}
+.space-off{background-position:-440px -382px;}
+.space-on:hover{background-position:-420px -402px;}
+.space-off:hover{background-position:-440px -402px;}
+
+/*===========================================树选择================================================*/
+.cate-tree{background:#fff;border:1px solid #333;float:left;width:170px;height:250px;font-size:14px;overflow-x:hidden;overflow-y:scroll;}
+.cate-tree p{margin:1px 0;padding:0;height:26px;line-height:26px;display:block;text-indent:10px;color:#333;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+.cate-tree p label{display:block;}
+.cate-tree p label.current{background:#c9e3f6;color:#333;}
+.cate-tree p label:hover{background:#559ED2;color:#fff;}

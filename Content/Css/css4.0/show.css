@@ -1,0 +1,49 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.platform{margin:20px 15px 20px 0;}
+.mod-title{overflow:hidden;}
+.mod-title h1{float:left;font:600 18px 微软雅黑,宋体,arial;color:#555;}
+.mod-title .total{float:left;background:#f4f4f4;overflow:hidden;margin-left:17px;width:530px;}
+.mod-title .total li{float:left;color:#666;padding-left:12px;height:28px;line-height:28px;}
+.mod-title .total li b{color:#333;margin-right:2px;}
+.mod-title .total li .l15{margin-left:15px;}
+.mod-title .view{float:right;}
+.mod-title .view i{float:left;background:url(../images/mcm-icon-2013.png) no-repeat -63px -17px;width:28px;height:20px;}
+.mod-title .view a{color:#0b559f;}
+.mod-title .view a:hover{text-decoration:underline;}
+
+.mod-date{clear:both;background:#e2effb;height:35px;line-height:35px;margin:20px 0;}
+.mod-date li{float:left;margin:5px 0 5px 10px;line-height:25px;}
+.mod-date li a{display:block;width:100%;height:100%;text-align:center;line-height:25px;color:#0b559f;}
+.mod-date .current a,
+.mod-date .current a:hover{color:#fff;font-weight:bold;background:#76a2cd;text-decoration:none;}
+.mod-date li a:hover{background:#cddfef;text-decoration:none;}
+
+.mod-total{clear:both;}
+.mod-total ul{background:#fef9f3;overflow:hidden;border:1px solid #e4ceb8;}
+.mod-total ul li{float:left;width:17%;padding:20px 0 20px 20px;color:#666;font-size:14px;line-height:25px;}
+.mod-total ul .line-r{border-right:1px solid #e4ceb8;}
+.mod-total ul li b{color:#333;}
+
+.mod-chart{clear:both;margin:20px 0;}
+.mod-chart .pie{float:left;}
+.mod-chart .graph{float:right;}
+
+.mod-table{clear:both;margin:30px 0;overflow:hidden;}
+.mod-table h2{font-size:14px;color:#333;font-weight:bold;text-indent:15px;background:#eeeeee;height:30px;line-height:30px;}
+.mod-table table{width:100%;padding:0;margin:0;}
+.mod-table tr:hover td{background:#e8f3fd;}
+.mod-table th,
+.mod-table td{padding:5px 5px 5px 15px;line-height:20px;}
+.mod-table th{background:#a5a5a5;color:#fff;}
+.mod-table td{border-bottom:1px solid #ededed;}
+
+.mod-data{clear:both;}
+.mod-data h2{font-size:14px;color:#333;font-weight:bold;text-indent:15px;height:30px;line-height:30px;}
+.mod-data ul{background:#f4f4f4;padding:15px;overflow:hidden;border-top:1px solid #dfdfdf;}
+.mod-data ul li{float:left;width:29%;padding:0 0 0 50px;}
+.mod-data ul .line-r{border-right:1px dotted #b7b7b7;}
+.mod-data dl{margin:20px 0;padding:0;}
+.mod-data dt{font-size:12px;color:#555;font-weight:bold;margin-bottom:10px;}
+.mod-data dd a{color:#0b559f;margin-right:30px;}

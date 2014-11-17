@@ -1,0 +1,44 @@
+.switch-sty01{float:left;vertical-align:middle;position:absolute;right:10px;top:5px;}
+.switch-sty01 .jquery-switch       {display:inline;font-size:15px;line-height:15px;cursor:pointer;}
+.switch-sty01 .jquery-switch .mark {display:inline;}
+.switch-sty01 .jquery-switch img   {width:50px;height:20px;background:url("../images/checkbox.png") no-repeat;border:0;}
+.switch-sty01 .jquery-switch-hover img{background-position:0px -20px;}
+.switch-sty01 .jquery-switch-checked img{background-position:0px -40px;}
+.switch-sty01 .jquery-switch-checked .jquery-switch-hover img{background-position: 0px -60px;}
+
+.switch-sty02{float:left;vertical-align:middle;}
+.switch-sty02 .jquery-switch       {display:inline;font-size:15px;line-height:15px;cursor:pointer;}
+.switch-sty02 .jquery-switch .mark {display:inline;}
+.switch-sty02 .jquery-switch img   {width:50px;height:20px;background:url("../images/checkbox.png") no-repeat 0 -80px;border:0;}
+.switch-sty02 .jquery-switch-hover img{background-position:0px -100px;}
+.switch-sty02 .jquery-switch-checked img{background-position:0px -120px;}
+.switch-sty02 .jquery-switch-checked .jquery-switch-hover img{background-position: 0px -140px;}
+
+.switch-sty03{float:left;vertical-align:middle;}
+.switch-sty03 .jquery-switch       {display:inline;font-size:15px;line-height:15px;cursor:pointer;}
+.switch-sty03 .jquery-switch .mark {display:inline;}
+.switch-sty03 .jquery-switch img   {width:100px;height:20px;background:url("../images/checkbox.png") no-repeat 0 -160px;border:0;}
+.switch-sty03 .jquery-switch-hover img{background-position:0px -180px;}
+.switch-sty03 .jquery-switch-checked img{background-position:0px -200px;}
+.switch-sty03 .jquery-switch-checked .jquery-switch-hover img{background-position: 0px -220px;}
+
+.switch-sty04{float:left;vertical-align:middle;}
+.switch-sty04 .jquery-switch       {display:inline;font-size:15px;line-height:15px;cursor:pointer;}
+.switch-sty04 .jquery-switch .mark {display:inline;}
+.switch-sty04 .jquery-switch img   {width:150px;height:20px;background:url("../images/checkbox.png") no-repeat 0 -240px;border:0;}
+.switch-sty04 .jquery-switch-hover img{background-position:0px -260px;}
+.switch-sty04 .jquery-switch-checked img{background-position:0px -280px;}
+.switch-sty04 .jquery-switch-checked .jquery-switch-hover img{background-position: 0px -300px;}
+
+.switch-sty05{float:left;vertical-align:middle;}
+.switch-sty05 .jquery-switch       {display:inline;font-size:15px;line-height:15px;cursor:pointer;}
+.switch-sty05 .jquery-switch .mark {display:inline;}
+.switch-sty05 .jquery-switch img   {width:150px;height:20px;background:url("../images/checkbox.png") no-repeat 0 -320px;border:0;}
+.switch-sty05 .jquery-switch-hover img{background-position:0px -340px;}
+.switch-sty05 .jquery-switch-checked img{background-position:0px -360px;}
+.switch-sty05 .jquery-switch-checked .jquery-switch-hover img{background-position: 0px -380px;}
+
+/*===========================================图片格================================================*/
+.boxgrid{float:left;overflow:hidden;position:relative;}
+.boxcaption{background:#000;float:left;left:0;filter:alpha(opacity=90);-moz-opacity:0.90;opacity:0.90;position:absolute;width:100%;color:#fff;text-align:center;}
+.boxcaption p{margin:10px 15px;}

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网上订单</title>
+<style type="text/css">
+  body{
+	  font-size:13px;
+	  line-height:25px;
+	  }
+  td{
+	  text-align:center;
+	  border-bottom:1px solid;
+	  border-right:1px solid;
+	  }
+  table{
+	  border-left:1px solid;
+	  border-top:1px solid;
+	  width:350px;
+	  }
+  .title{
+	  font-weight:bold;
+	  background-color:#cccccc;
+	  }
+</style>
+<script type="text/javascript">
+  function InsertRow(){
+       var tableRow = document.getElementById("mytable");
+	   var row_index = tableRow.rows.length-1;
+	   var trRow = tableRow.insertRow(row_index);
+	   trRow.id = "trRow"+row_index;
+	   
+	   var cel1 = trRow.insertCell(0);
+	   cel1.innerHTML = "<input id='td1"+row_index+"' style='width:160px;' type='text'/>";
+	   
+	   var cel2 = trRow.insertCell(1);
+	   cel2.innerHTML = "<input id='td2"+row_index+"' style='width:30px;' type='text'/>";
+	   
+	   var cel3 = trRow.insertCell(2);
+	   cel3.innerHTML = "<input id='td3"+row_index+"' style='width:30px;' type='text'/>";
+	   
+	   var cel4 = trRow.insertCell(3);
+cel4.innerHTML="<input name='de1"+row_index+"' type='button' value='删除' onclick=\"dlRow('trRow"+row_index+"')\"/>&nbsp;<input id='dell"+row_index+"' type='button' value='确定' onclick=\"update('trRow"+row_index+"')\" />";
+	  }
+	function dlRow(RowId){ 
+	  var deleteRow = document.getElementById(RowId).rowIndex;
+	  document.getElementById("mytable").deleteRow(deleteRow);
+		}
+   function updateRow(RowId){
+	   var trRow = document.getElementById(RowId).rowIndex;
+	   var col =document.getElementById(RowId).cells;
+	   var text0 = col[0].innerHTML;
+	   col[0].innerHTML="<input name='td1"+trRow+"' style='width:160px;' type='text' value='"+text0+"'/>";
+	   
+	   var text1 = col[1].innerHTML;
+	   col[1].innerHTML="<input name='td2"+trRow+"' style='width:30px;' type='text' value='"+text1+"'/>";
+	   
+	   var text2 = col[2].innerHTML;
+	   col[2].innerHTML="<input name='td2"+trRow+"' style='width:30px;' type='text' value='"+text2+"'/>";
+	   
+	   col[3].lastChild.value="确定";
+	   col[3].lastChild.setAttribute("onclick","update('"+RowId+"')");
+	   }
+  function update(RowId){
+	  var trRow = document.getElementById(RowId).rowIndex;
+	  var col = document.getElementById(RowId).cells;
+	  var text0 = col[0].firstChild.value;
+	  var text1 = col[1].firstChild.value;
+	  var text2 = col[2].firstChild.value;
+	  col[0].innerHTML=text0;
+	  col[1].innerHTML=text1;
+	  col[2].innerHTML=text2;
+	  
+	  col[3].lastChild.value="修改";
+	  col[3].lastChild.setAttribute("onclick","updateRow('"+RowId+"')");
+	  }
+</script>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" id="mytable">
+<tr class="title">
+<td>商品名称</td>
+<td>数量</td>
+<td>单价</td>
+<td>操作</td>
+</tr>
+<tr id="trRow1">
+<td>玫瑰保湿睡眠面膜</td>
+<td>5</td>
+<td>&yen;48</td>
+<td><input name="de1" type="button" value="删除" onclick="dlRow('trRow1')"/>
+<input id='dell' type="button" value="修改" onclick="updateRow('trRow1')"/></td>
+</tr>
+<tr>
+<td colspan="4" align="center"><input name="btn" type="button" value="增加订单" onclick="InsertRow()"/></td>
+</tr>
+</table>
+</body>
+</html>

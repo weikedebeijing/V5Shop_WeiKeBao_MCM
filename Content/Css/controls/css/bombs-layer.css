@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* 背景 */
+.ui-layer-bg {
+    background:#000;
+    filter:alpha(opacity=50);  
+	-moz-opacity:0.5;  
+	-khtml-opacity:0.5;  
+	opacity: 0.5;
+    position:fixed;
+	height:100%;
+	width:100%;
+}
+
+/* 浮动层样式 */
+.ui-layer{
+	position:fixed;
+	top:50%;
+	left:50%;
+	background:#fff;
+	border: 1px solid #aaa;
+    box-shadow:0 0 5px rgba(201, 201, 201, 0.9);
+	}
+.ui-layer-box {
+	position:relative;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+.ui-layer-title {
+    background:#f2f2f2;
+    height:35px;
+    line-height:35px;
+    margin: 1px;
+    text-indent:10px;
+	border-bottom:1px #ddd solid;
+}
+.ui-layer-title h2 {
+    color:#333;
+	font-weight:bold;
+    font-size:14px;
+}
+.ui-layer-content{overflow:auto;font-size:12px;color:#555;}
+.ui-layer-content .box-content{margin:20px 25px;}
+.ui-layer-content iframe{border:0;width:100%;height:100%;left:0;right:0;top:0;bottom:0;}
+
+.ui-layer-actionbar{position:absolute;width:100%;height:45px;bottom:0;background:#f5f5f5;border-top:1px #ddd solid;text-align:center;}
+.ui-layer-close a{
+    height:17px;
+    position:absolute;
+    right:5px;
+    top:7px;
+    width: 17px;
+	background:url(../images/windows-btn.png) no-repeat -66px -59px;
+}
+.ui-layer-close a:hover{background:url(../images/windows-btn.png) no-repeat -66px -31px;}
+
+
+.ui-layer .ui-box-se,.ui-layer .ui-layer-title,.ui-layer .ui-layer-actionbar{display:none;}
+
+.ui-loading{width:80px;
+height:40px;
+left:50%;
+top:50%;
+margin:-20px 0 0 -40px;
+position:absolute;
+text-align: left;
+text-indent: -999em;
+overflow: hidden;
+background: url(../images/loading.gif) no-repeat center center;
+}
+
+/* 功能开启项目 */
+.ui-title .ui-layer-content{top:38px;left:0;right:0;bottom:0;}/*内容区*/
+.ui-title .ui-layer-title{display:block;}/*标题*/
+.ui-title .ui-loading{margin-top:-1px;}/*Loading位置*/
+.ui-drag .ui-layer-title{cursor:move;}/*拖动对话框*/
+.ui-resize .ui-layer-se{cursor:se-resize;float:left;display:block;position:absolute;right:0;bottom:0;width:10px;height:10px;z-index:10;}/*调整大小*/
+.ui-button .ui-layer-actionbar{display:block;}
+.ui-button .ui-loading{margin-top:-42px;}
+
+/* 按钮 */
+button{width:90px;height:32px;margin:6px 2px;cursor:pointer;}
+.submit-btn{background:#3a8ada;color:#fff;border:1px solid #2875c1;}
+.submit-btn:hover{background:#4e99e3;border:1px solid #206cb6;}
+.cancel-btn{background:#edecec;color:#333;border:1px solid #dddcdc;}
+.cancel-btn:hover{background:#f2f0f0;border:1px solid #d0cfcf;}
+

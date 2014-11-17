@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" tyle="text/css" href="css/base.css" />
+<link rel="stylesheet" tyle="text/css" href="css/Controls.css" />
+</head>
+
+<body>
+<div class="ui-layer-bg"></div>
+<div class="ui-layer" style="width:900px;height:500px;margin:-250px 0 0 -450px;" >
+<div class="ui-layer-box ui-drag ui-resize ui-button ui-title"><!--开启功能-->
+  <div class="ui-layer-se"></div>
+  <div class="ui-loading"></div>
+  <div class="ui-layer-title">
+    <h2>系统提示层</h2>
+    <div class="ui-layer-close"><a style="display:block;" title="关闭" href="#"></a>  </div>
+  </div>
+    <!--Content Start-->
+    <div class="ui-layer-content" style="height:417px;">
+      <!--<div class="box-content">如果定义了回调函数才会出现相应的按钮</div>-->
+      <iframe src="/extension/Resources.html" style="height:100%;width:100%;"></iframe>
+    </div>
+    <!--Content End-->
+    <div class="ui-layer-actionbar">
+      <button class="submit-btn">确定</button>
+      <button class="cancel-btn">关闭</button>
+    </div>
+</div>
+</div>
+<!--解决IE下阴影 Start-->
+<!--[if IE]><div class="ui-layer-bg" style="width:600px;height:400px;"></div><![endif]-->
+<!--解决IE下阴影 End-->
+</body>
+</html>

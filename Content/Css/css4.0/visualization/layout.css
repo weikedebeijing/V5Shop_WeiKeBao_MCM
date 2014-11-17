@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+html{overflow:auto;}
+
+.headbar,.mainbar,.foodbar{text-align:center;display:block;margin:0 auto;}
+.mainbar{margin:10px auto;}
+
+
+/*==========布局框架选择器==========*/
+.frame-edit .layout-1,
+.frame-edit .layout-1-1,
+.frame-edit .layout-1-2,
+.frame-edit .layout-2-1,
+.frame-edit .layout-1-2-1,
+.frame-edit .layout-1-1-2,
+.frame-edit .layout-2-1-1,
+.frame-edit .layout-2-2-1,
+.frame-edit .layout-1-2-2,
+.frame-edit .layout-1-1-1
+{text-align:left;}
+.frame-edit .layout .layout-l,
+.frame-edit .layout .layout-m,
+.frame-edit .layout .layout-r{float:left;}
+.frame-edit .layout .module,
+.frame-edit .layout .module-add{margin:0 0 5px 10px;}
+.frame-edit .layout .layout-l .module,
+.frame-edit .layout-1 .module,
+.frame-edit .layout .layout-1 .layout-m .module,
+.frame-edit .layout .layout-l .module-add,
+.frame-edit .layout-1 .module-add,
+.frame-edit .layout .layout-1 .layout-m .module-add{margin-left:0;}
+
+.frame-edit .layout-1,
+.frame-edit .layout-1 .layout-m{width:100%;}
+
+.frame-edit .layout-1-1 .layout-l,
+.frame-edit .layout-1-1 .layout-r{width:50%;}
+
+.frame-edit .layout-1-2 .layout-l{width:18%;}
+.frame-edit .layout-1-2 .layout-r{width:82%;}
+
+.frame-edit .layout-2-1 .layout-l{width:82%;}
+.frame-edit .layout-2-1 .layout-r{width:18%;}
+
+.frame-edit .layout-1-1-1 .layout-l,
+.frame-edit .layout-1-1-1 .layout-r{width:33%;}
+.frame-edit .layout-1-1-1 .layout-m{width:34%;}
+
+.frame-edit .layout-1-1-2 .layout-l,
+.frame-edit .layout-1-1-2 .layout-m{width:18%;}
+.frame-edit .layout-1-1-2 .layout-r{width:64%;}
+
+.frame-edit .layout-1-2-1 .layout-l,
+.frame-edit .layout-1-2-1 .layout-r{width:18%;}
+.frame-edit .layout-1-2-1 .layout-m{width:64%;}
+
+.frame-edit .layout-1-2-2 .layout-l{width:18%;}
+.frame-edit .layout-1-2-2 .layout-m,
+.frame-edit .layout-1-2-2 .layout-r{width:41%;}
+
+.frame-edit .layout-2-1-1 .layout-l{width:64%;}
+.frame-edit .layout-2-1-1 .layout-m,
+.frame-edit .layout-2-1-1 .layout-r{width:18%;}
+
+.frame-edit .layout-2-1-2 .layout-l,
+.frame-edit .layout-2-1-2 .layout-r{width:41%;}
+.frame-edit .layout-2-1-2 .layout-m{width:18%;}
+
+.frame-edit .layout-2-2-1 .layout-l,
+.frame-edit .layout-2-2-1 .layout-m{width:41%;}
+.frame-edit .layout-2-2-1 .layout-r{width:18%;}
+
+.sortHelper{border:2px dashed #f00;background:#fff;width:auto !important;z-index:-1;}
+#dragHelper{z-index:99;}
+.layout-1 .sortHelper{margin-left:10px;}
+.layout-l,.layout-m,.layout-r{padding:1px 0;}

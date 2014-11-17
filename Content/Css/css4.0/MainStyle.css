@@ -1,0 +1,325 @@
+.headDiv
+{
+    width: 100%;
+    height: 50px;
+}
+
+.floatLeftDiv
+{
+    float: left;
+    margin-top: 5px;
+}
+
+.selectModuleDiv
+{
+    width: 173px;
+    height: 42px;
+    line-height: 42px; /*border: 1px solid #CCCCCC;*/
+    font-size: 15pt;
+    text-align: center;
+    font-family: @微软雅黑;
+    color: White;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.selectItem
+{
+    width: 173px;
+    height: 42px;
+    line-height: 42px; /*border: 1px solid #CCCCCC;*/
+    font-size: 12pt;
+    text-align: center;
+    font-family: @微软雅黑;
+    color: White;
+    font-weight: 500;
+}
+
+.selectBackgroundColor
+{
+    background-color: #dddddd;
+    cursor: pointer;
+}
+
+.divHover
+{
+    background-color: #efefef;
+    cursor: pointer;
+}
+
+.leftBigMenu
+{
+    width: 173px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #d6d6d6;
+    text-align: center;
+}
+
+.leftMenuItem
+{
+    width: 173px;
+    height: 32px;
+    line-height: 32px;
+    text-align: left;
+    color: #222222;
+    font-size: 11pt;
+    font-weight: 500;
+}
+
+.categoryItem
+{
+    width: 240px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.categoryItem:hover
+{
+    width: 240px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #00aaff;
+    cursor: pointer;
+}
+
+.categoryItemClick
+{
+    background-color: #206EBC;
+    color: White;
+}
+
+.hasSubCategory /*类目选择的时候给有子目录的项加一个小三角标记*/
+{
+    background: url(images/traingle.png) no-repeat;
+    float: right;
+    margin-right: 20px;
+    width: 9px;
+    height: 15px;
+    margin-top: 9px;
+}
+
+.selectCategoryDiv /*类目选择容器的超出部分处理*/
+{
+    overflow-x: hidden;
+    overflow-y: auto;
+    float: left;
+    margin-left: 10px;
+    border: 1px solid #cccccc;
+}
+
+.hasSelectedCategoryDiv
+{
+    /* width: 900px;     height: 40px;     line-height: 40px;     margin-left: 30px;     background-color: Orange;     border: 1px solid #cccccc;     margin-top: 320px;*/
+}
+
+.hasSelectedCategoryDivText
+{
+    /* font-size: 11pt;          height: 40px;     line-height: 40px;*/
+    font-weight: 600;
+    float: left;
+}
+
+#btnOk
+{
+    /*width: 200px;     height: 35px;     line-height: 35px;     background-color: #0000aa;     font-size: 11pt;     font-weight: 600;     color: White;     text-align: center;     margin-top: 30px;     margin-left: 400px;*/
+    display: none;
+}
+
+#btnWait
+{
+    /*width: 200px;     height: 35px;     line-height: 35px;     background-color: #0000aa;     font-size: 11pt;     font-weight: 600;     color: White;     text-align: center;     margin-top: 30px;     margin-left: 400px;*/
+    display: block;
+}
+
+.btnOk:hover
+{
+    width: 200px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #0000ee;
+    font-size: 11pt;
+    font-weight: 600;
+    color: White;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 400px;
+    cursor: pointer;
+}
+
+.smallImg
+{
+    width: 120px;
+    height: 20px;
+    margin-top: 5px;
+}
+
+.smallImg div
+{
+    width: 18px;
+    height: 18px;
+    border: 1px solid #cccccc;
+    float: left;
+    margin-right: 5px;
+}
+
+.uploadImgItem
+{
+    margin-left: 10px;
+    width: 90px;
+    height: 90px;
+    float: left;
+}
+
+.uploadImgItemPreview
+{
+    margin-top: 10px;
+    width: 90px;
+    height: 90px;
+    border: 1px solid #cccccc;
+    position: relative;
+    overflow:hidden;
+}
+
+.uploadImgItemPreview img
+{
+    margin:auto auto;
+}
+
+.uploadImgBtn
+{
+    width: 92px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    margin-top: 5px;
+    position: relative;
+}
+
+.width100px
+{
+    width: 100px;
+}
+
+.width150px
+{
+    width: 150px;
+}
+
+/*商品列表页样式开始*/
+.functionItemBar
+{
+    height: 25px;
+    line-height: 25px;
+    width: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.functionItemBar div
+{
+    width: 100px;
+    float: left;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.functionItemButton
+{
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
+}
+
+.flexigridtableClass td
+{
+    font-size: 10pt;
+}
+
+.textAlignLeft
+{
+    text-align: left;
+}
+/*商品列表页样式结束*/
+
+/*添加商品页样式开始*/
+#specColorTable td
+{
+    border: 1px solid #cccccc;
+    width: 200px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.specName
+{
+    clear: both;
+    width: 130px;
+    height: 35px;
+    line-height: 35px;
+    float: left;
+}
+
+.specCombineTable td
+{
+    border: 1px solid #cccccc;
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.specCombineTable td input[type=text]
+{
+    width: 80px;
+    margin: 5px auto;
+}
+
+.uploadButton
+{
+    width: 60px;
+    height: 24px;
+}
+
+.uploadInputFile
+{
+    height: 24px;
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    z-index: 10;
+    opacity: 0;
+    filter: alpha(opacity:0);
+}
+
+.operateImg
+{
+    width: 100%;
+    height: 35%;
+    background-color: #cccccc;
+    opacity: 0.5;
+    filter: alpha(opacity:50);
+    position: absolute;
+    bottom: 0px;
+    display: none;
+}
+
+.operateImg div
+{
+    float: left;
+    margin-left: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 14pt;
+    font-weight: 900;
+    color: #222222;
+    cursor: pointer;
+}
+/*添加商品页样式开始*/
+
+.spMessage
+{
+    color: Red;
+    font-size: 10pt;
+}

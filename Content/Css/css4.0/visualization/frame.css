@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+
+.module{background:#f3fafe;border:1px #add4f2 solid;padding:3px 8px;display:block;font-size:14px;z-index:999;}
+.module:hover{background:#fff;border:1px #add4f2 solid;padding:3px 8px;display:block;}
+.module i{float:right;background:url(../../images/template-main.png) no-repeat -575px -42px;width:16px;height:16px;margin:2px 0 0 0;}
+.module i a{float:right;width:16px;height:16px;}
+.module i a:hover{float:right;width:16px;height:16px;background:url(../../images/template-main.png) no-repeat -591px -42px;}
+
+/*==========布局模块管理(布局模式编辑)==========*/
+.frame-mode{margin:25px 15px;}
+.frame-mode h1{font-size:24px;font-weight:bold;}
+.frame-mode .frame-bar{position:absolute;top:90px;left:0;right:0;bottom:0;}
+.frame-mode iframe{position:absolute;width:100%;height:100%;top:0;left:0;right:0;bottom:0px;}
+/*导航*/
+.tp-nav{font-size:14px;color:#333;}
+/*布局编辑*/
+.frame-edit{font-size:14px;position:relative;width:80%;margin:0px 15px;}
+
+/*模块选择器*/
+.frame-edit .module{background:#f3fafe;border:1px #add4f2 solid;padding:3px 8px;display:block;cursor:move;}
+.frame-edit .module:hover{background:#3792d6;border:2px #4386b9 solid;padding:2px 7px;display:block;color:#fff;}
+.frame-edit .module i{float:right;background:url(../../images/template-main.png) no-repeat -577px -41px;margin:0;}
+.frame-edit .module i a{float:right;width:20px;height:20px;}
+.frame-edit .module i a:hover{float:right;width:20px;height:20px;background:url(../../images/template-main.png) no-repeat -589px -41px #e3f0fa;border:1px solid #add4f2;}
+
+/*布局选择器*/
+.frame-edit .layout{background:#e3f0fa;border:1px #add4f2 solid;margin:10px 0 0 0;padding:10px 10px 5px 10px;float:left;display:block;width:100%;position:relative;}
+.frame-edit .layout s{display:block;margin:2px 0 10px 0;position:absolute;right:-23px;top:-3px;}
+.frame-edit .layout s a{background:url(../../images/template-main.png) no-repeat -571px -40px #e3f0fa;display:block;width:22px;height:22px;border:1px solid #add4f2;border-left:0;}
+.frame-edit .layout s a:hover{background:url(../../images/template-main.png) no-repeat -587px -40px #fbf9bd;border-style:dotted;border-color:#fee77f;}
+.frame-edit .layout:hover{background:#fbf9bd;border:1px #fee77f dotted;margin:10px 0 0 0;padding:10px 10px 5px 10px;float:left;display:block;width:100%;}
+.frame-edit .layout:hover s a{background:url(../../images/template-main.png) no-repeat -587px -40px #fbf9bd;border:1px dotted #fee77f;border-left:0;}
+.frame-edit .layout-fixed,
+.frame-edit .layout-fixed:hover{font-size:14px;margin:0;}
+.frame-edit .header,.frame-edit .footbar{cursor:auto;}
+.frame-edit .header span,.frame-edit .footbar span{color:#f00;display:block;padding:0 5px;}
+.frame-edit .layout-fixed .module{margin-left:0;}
+.frame-edit .del{background:#3792D6;overflow:hidden;text-align:center;color:#fff;}
+.frame-edit .del:hover{background:#4ba3e5;font-weight:bold;}
+
+/*添加布局*/
+.frame-edit .layout-add{background:#f3fafe;border:1px #0054a6 dotted;padding:5px 10px;display:block;cursor:pointer;color:#0054a6;margin-bottom:10px;}
+.frame-edit .layout-add a{color:#0054a6;display:block;}
+.frame-edit .layout-add:hover{background:#4ba3e5;border:1px #0054a6 soid;padding:5px 10px;display:block;margin-bottom:10px;}
+.frame-edit .layout-add:hover a{color:#fff;}
+
+/*添加模块*/
+.frame-edit .module-add{background:#fff;border:2px #4386b9 dotted;padding:2px 9px;margin-bottom:0px;display:block;}
+.frame-edit .module-add a{color:#0054a6;display:block;}
+.frame-edit .module-add:hover{background:#3792D6;border:2px #0054a6 solid;padding:2px 9px;display:block;}
+.frame-edit .module-add:hover a{color:#fff;}
+

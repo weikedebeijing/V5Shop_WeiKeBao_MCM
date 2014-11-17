@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+
+.out-table-bar .textExplanation{display:inline-block;margin:10px 10px 10px 20px;font-size:16px;}
+.out-table-bar .number{padding:0 5px;color:#de533c;font-size:20px;}
+.out-table-bar .edit{display:inline-block;margin:10px 10px 10px 0;}
+.out-table-bar .edit .icon-pen-gray{background-position:-203px 0px;height:20px;
+									-webkit-transition:0.5s ease;
+												-moz-transition:0.5s ease;
+													-o-transition:0.5s ease;
+														transition:0.5s ease;
+}
+.out-table-bar .edit:hover .icon-pen-gray{background-position:-203px -30px;}

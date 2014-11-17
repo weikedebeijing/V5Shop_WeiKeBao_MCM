@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*==========可视化模块管理(可视化模式编辑)==========*/
+.visual-mode{margin:0 auto;}
+
+/*---可视化编辑---*/
+.visual-edit{margin:auto;position:relative;}
+.visual-edit .mainbar{overflow:visible;}
+.visual-edit .layout{display:block;position:relative;float:left;}
+.visual-edit .layout-blank{position:absolute;z-index:-1;float:left;top:-5px;bottom:5px;left:-5px;right:-25px;border:2px dotted #ccc;background:#f0f0f0;}
+.visual-edit .layout-blank:hover{border:2px dotted #fbdf5e;background:#fbf9bd;}
+.visual-edit .layout-blank .module{margin-bottom:0;}
+.visual-edit .layout s{display:block;margin:2px 0 10px 0;position:absolute;right:0px;top:-3px;}
+.visual-edit .layout s a{background:url(../../images/template-main.png) no-repeat -571px -34px;display:block;width:22px;height:35px;}
+.visual-edit .layout s a:hover{background:url(../../images/template-main.png) no-repeat -587px -34px;}
+
+
+/*布局选择器
+.visual-edit .layout-w-1{width:auto;}
+.visual-edit .layout-w-2{width:auto;}
+.visual-edit .layout-l,.visual-edit .layout-m,.visual-edit .layout-r{float:left;}
+.visual-edit .layout-m,.visual-edit .layout-r{margin-left:10px;}*/
+
+/*模块选择器*/
+.visual-edit .module{z-index:999;}
+.visual-edit .mainbar .module-float,.visual-edit .footbar .module-float{display:block;position:relative;overflow:hidden;}
+.visual-edit .mainbar .module-float:hover{display:block;}
+.visual-edit .headbar .module,visual-edit .footbar .module{display:block;margin:0;}
+/*.visual-edit .module i{float:right;background:url(../images/template-main.png) no-repeat -575px -42px;width:16px;height:16px;margin:2px 0 0 0;}
+.visual-edit .module i a{float:right;width:16px;height:16px;}
+.visual-edit .module i a:hover{float:right;width:16px;height:16px;background:url(../images/template-main.png) no-repeat -591px -42px;}*/
+
+/*添加布局*/
+.visual-edit .layout-add{background:#3792d6;margin:0 0 10px 0;padding:3px 0;display:block;cursor:pointer;color:#fff;font-weight:bold;text-align:center;clear:both;}
+.visual-edit .layout-add a{color:#fff;display:block;}
+.visual-edit .layout-add:hover{background:#48a4e8;display:block;}
+.visual-edit .layout-add:hover a{color:#fff;}
+
+/*添加模块*/
+.visual-edit .module-add{background:#fff;border:1px #3792d6 dotted;padding:3px 8px;display:block;}
+.visual-edit .module-add a{color:#0054a6;display:block;}
+.visual-edit .module-add:hover{background:#3792d6;border:1px #3792d6 soid;padding:3px 10px;display:block;}
+.visual-edit .module-add:hover a{color:#fff;}
+

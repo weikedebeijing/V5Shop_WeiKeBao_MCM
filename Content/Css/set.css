@@ -1,0 +1,69 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.icon-pen-green,
+.arrow,
+.icon-tip-yellow,
+.icon-help-blue,
+.icon-back-blue,
+.icon-help-green,
+.icon-eject-green,
+.icon-car-green{background:url("../imagesv2/icon.png") no-repeat;display:inline-block; vertical-align:middle;}
+.icon-pen-green{background-position:-234px -138px;width:20px;height:20px;}
+.arrow{background-position:-234px -170px;width:11px;height:19px;}
+.icon-tip-yellow{background-position:-268px -140px;width:15px;height:15px;}
+.icon-help-blue{background-position:-268px -170px;width:15px;height:15px;}
+.icon-back-blue{background-position:-268px -200px;width:15px;height:15px;}
+.icon-help-green{background-position:-234px -196px;width:20px;height:20px;}
+.icon-eject-green{background-position:-234px -225px;width:20px;height:15px;}
+.icon-car-green{background-position:-234px -245px;width:20px;height:15px;}
+
+/*title*/
+.bigTitle{border-bottom:1px solid #ccc;overflow:hidden;}
+.bigTitle-name{float:left;margin:25px 25px 20px 30px;}
+.bigTitle-name .text{margin:0 20px 0 15px;font-size:25px;color:#333;font-weight:normal;vertical-align:middle;}
+.smallTitle{margin-bottom:15px;}
+.smallTitle .text{margin:0;font-size:18px;color:#333;vertical-align:middle;}
+.smallTitle i{margin-right:10px;}
+/*button*/
+p.button .btn-primary{background:url("../imagesv2/button.png")no-repeat 0 0;min-width:150px;transition:all 500ms ease;}
+p.button .btn-primary:hover{background-position:0 -71px;}
+
+/*--------------payset-------------*/
+.payset .main{padding:20px 45px 0 45px;}
+.payset .ahelp{ float:right;color:#00acec;}
+.payset .ahelp i{margin-right:5px;}
+.payset .ahelp:hover{text-decoration:underline;}
+.payset .applyStep{list-style:none;}
+.payset .applyStep li{position:relative;padding:15px;margin-bottom:20px;border:1px solid #e7e7e7;
+		-webkit-border-radius:3px;
+			-moz-border-radius:3px;
+				-o-border-radius:3px;
+					border-radius:3px;}
+.payset .applyStep .arrow{position:absolute;left:-11px;}
+.payset .applyStep a{color:#00acec;}
+.payset .applyStep a:hover{text-decoration:underline;}
+.payset .applyStep .content{margin:0;padding:0;font-size:15px;line-height:25px;color:#333;}
+.payset .applyStep .explanation{margin:0 0 20px 0;}
+.payset .applyStep .explanation05{margin:0 0 10px 0;}
+.payset .applyStep .explanation05-2{margin:30px 0 10px 0;}
+.payset .applyStep .input-label{width:auto;margin-right:15px;color:#999;font-size:12px;}
+.payset .applyStep .input-fare{text-align:left;}
+.payset .applyStep .fare{margin-bottom:0;}
+.payset .applyStep .title{color:#999;font-size:12px;line-height:30px;}
+.payset .applyStep .text{color:#00acec;font-size:12px;}
+.payset .applyStep .number{position:absolute;left:-60px;top:15px;width:26px;height:26px;line-height:26px;background:#55bce2;text-align:center;color:#fff;z-index:2;
+		-webkit-border-radius:13px;
+			-moz-border-radius:13px;
+				-o-border-radius:13px;
+					border-radius:13px;
+}
+.payset .applyStep .line{position:absolute;left:-47px;top:0;bottom:0;margin-bottom:-50px;margin-top:15px;width:3px;background:#dcdcdc;z-index:1;}
+.payset .controls input{margin-bottom:0;}
+.smallTitle .tip{color:#999;margin-top:5px;}
+.smallTitle .tip i{margin-right:5px;}
+.payset02form{margin:30px 0 0 0;}
+.payset02form label{font-size:16px;}
+.payset02form label.inline{padding-left:0;}
+.aback{margin-left:30px;color:#00acec;font-size:16px;}
+.aback:hover{text-decoration:underline;}

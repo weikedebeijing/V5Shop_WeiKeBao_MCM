@@ -1,0 +1,223 @@
+﻿
+
+#portletProductEditDetail .control-group
+{
+    margin-bottom: 10px;
+}
+
+#portletProductEditDetail .control
+{
+    margin-top: 10px;
+}
+
+#portletProductEditDetail .itemsLayout
+{
+    border: 4px solid #fff;
+}
+
+#portletProductEditDetail .itemsLayout
+{
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+#portletProductEditDetail .itemsLayout dt a
+{
+    width: 149px;
+    height: 103px;
+    display: block;
+}
+
+#portletProductEditDetail .line-item4 a
+{
+    background-image: url(/Content/Css/images/T1rWntXcFhXXXc5x6v-150-550.jpg);
+    background-position: 0 -110px;
+}
+
+#portletProductEditDetail .line-item3 a
+{
+    background-image: url(/Content/Css/images/T1rWntXcFhXXXc5x6v-150-550.jpg);
+    background-position: 0 0;
+}
+
+#portletProductEditDetail .itemsLayoutShot
+{
+    border: 4px solid #fff;
+}
+
+#portletProductEditDetail .itemsLayoutShot:hover
+{
+    border: 4px solid #fefecc;
+}
+
+#portletProductEditDetail .dtselected
+{
+    border: 4px solid #f4c41c;
+    position: relative;
+}
+
+#portletProductEditDetail .itemsLayout .dtselected span
+{
+    display: block;
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 23px;
+    height: 23px;
+    background: url(/Content/Css/images/T1NkDsXdXmXXXmJabb-23-23.png) 0 0 no-repeat;
+}
+
+#protletHomePicsEditDetail .homePicSettingTitle
+{
+    display: inline-block;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    border: 1px solid #0066cc;
+    border-bottom:none;
+    margin:10px 0 0 10px;
+}
+
+#protletHomePicsEditDetail .homePicSettingTitle:hover
+{
+    text-decoration: none;
+    background: #0066cc;
+    color: #fff;
+    border:1px solid #fff;
+    border-bottom:none;
+}
+
+#protletHomePicsEditDetail .homePicSettingTitleClick
+{
+    text-decoration: none;
+    background: #0066cc;
+    color: #fff;
+}
+
+
+#portletProductEditDetail .productSettingTitle
+{
+    display: inline-block;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    border: 1px solid #0066cc;
+    border-bottom:none;
+    margin:10px 0 0 10px;
+}
+
+#portletProductEditDetail .productSettingTitle:hover
+{
+    text-decoration: none;
+    background: #0066cc;
+    color: #fff;
+    border:1px solid #fff;
+    border-bottom:none;
+}
+
+#portletProductEditDetail .productSettingTitleClick
+{
+    text-decoration: none;
+    background: #0066cc;
+    color: #fff;
+}
+
+
+
+
+.separationLine
+{
+    margin-top: 5px;
+    height: 12px;
+    width: 500px;
+    border: 1px solid #0066cc;
+}
+
+.fileImage_Bg
+{
+    background: url(/Content/Css/images/shopDecorate/124578fileUploadimg.png) no-repeat;
+    background-position: 0 -13px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.fileImage_hidden
+{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.fileHeaderImage_hidden
+{
+    position:absolute;
+    top:100px;
+    left:0;
+    width: 220px;
+    height: 35px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    background:red;
+    }
+
+.upImg
+{
+    background: url(/Content/Css/images/shopDecorate/124578fileUploadimg.png) no-repeat;
+    background-position: 5px -100px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+.downImg
+{
+    background: url(/Content/Css/images/shopDecorate/124578fileUploadimg.png) no-repeat;
+    background-position: 5px -164px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+.deleteImg
+{
+    background: url(/Content/Css/images/shopDecorate/124578fileUploadimg.png) no-repeat;
+    background-position: 5px -195px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+.addImg
+{
+    background: url(/Content/Css/images/shopDecorate/124578fileUploadimg.png) no-repeat;
+    background-position: 5px -231px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+#homeNavigation
+{
+    list-style-type: none;
+    width: 907px;
+    height: 38px;
+    background-color: #ff2600;
+    cursor: pointer;
+}
+
+#homeNavigation li
+{
+    float: left;
+    width: 90px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 14px;
+    color: #fff;
+    margin-left: 0px;
+}
+
+.navigationBorderClass{border:1px solid red;}

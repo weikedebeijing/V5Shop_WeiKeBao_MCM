@@ -1,0 +1,695 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<%@ Import Namespace="Combres" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <% string menuCode = this.Request["MenuCode"];
+       string title = "";
+       if (!string.IsNullOrEmpty(menuCode))
+       {
+           var menuService = new V5.Service.Security.Services.MenuService();
+
+           var menus = menuService.GetAll().ToDictionary(x => x.MenuCode);
+
+           if (menus.ContainsKey(menuCode))
+           {
+               title = menus[menuCode].MenuName;
+           }
+           else
+           {
+               title = "电商操盘手";
+           }
+       }%>
+    <title>
+        <%= title%>
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../../Scripts/CssLoad.js?Item=default"></script>
+    <script src="../../../Scripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/dialog/artDialog.source.js?skin=default" type="text/javascript"></script>
+    <script src="../../../Scripts/Js/Common.js" type="text/javascript"></script>
+    <script src="../../../Scripts/Js/CheckBrowser.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <%-- <%=WebExtensions.CombresLink("siteJs")%>--%>
+    <asp:ContentPlaceHolder ID="LinkContent" runat="server" />
+</head>
+<body>
+    <!--tip start-->
+    <div class="mod-tip">
+        <div style="con style0green">
+            <div class="con style0green Loading" style="display: none;">
+                <!--style0green是成功提示；style0yellow是警告提示；style0red是错误提示-->
+                <span id="operateTip" class="txt" onclick="change()" onchange="change()" onmouseup="displayNone()"></span><i class="close"></i>
+            </div>
+        </div>
+    </div>
+    <!--tip end-->
+    <!--内嵌了一个每隔一段时间向服务器发请求的页面-->
+    <%--<iframe style="width: 0px; height: 0px;" src="../../AutoRefresh/Index"></iframe>--%>
+    <div class="MCM-T">
+        <div class="l-logo">
+            <img id="logo" height="25" width="auto" src="/content/images/logo.png" alt="logo" />
+        </div>
+        <div class="m-content">
+            <!--平台菜单 begin-->
+            <div class="nav" id="allnav">
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <div class="r-content">
+            <div class="member">
+                <a href="#" class="member-a" onmouseover="javascript:exitSystemOver();" onmouseout="javascript:exitSystemOut();">
+                    <i class="icon"></i><span class="text">
+                        <% V5.MetaData.Security.Model.User user = (V5.MetaData.Security.Model.User)Session["user"];
+                           if (user == null)
+                           {
+                               Response.Redirect("/Login/Login");
+                           }          
+                        %>
+                        <%
+                            V5.Service.Security.Services.Interfaces.IUserRoleService userRoleService = new V5.Service.Security.Services.UserRoleService();
+                            V5.Service.Security.Services.Interfaces.IRoleService roleService = new V5.Service.Security.Services.RoleService();
+                            var userRole = userRoleService.Find(u => u.UserID == user.ID);
+                            var roleName = "";
+                            if (userRole != null)
+                            {
+                                var role = roleService.Find(r => r.ID == userRole.RoleID);
+                                roleName = role.RoleName;
+                            }  
+                        %>
+                        <%: user.UserCode%>&nbsp;<%:roleName%></span><i class="arrow"></i> </a>
+                <ul class="member-list" id="exit_System">
+                    <li><a class="member-list-a" href="/Login/LoginOff" onmouseover="javascript:cancelColseMenu();"
+                        onmouseout="javascript:exitSystemOut();"><i class="icon-exit"></i><span class="text-exit">退出系统</span></a></li>
+                </ul>
+            </div>
+            <div class="websitmenu">
+                <!--guid begin-->
+                <a title="向导" class="websitmenu-a" href="/Statistics/Guide"><i class="icon-guid"></i>
+                </a>
+                <!--guid end-->
+                <!--dashbord begin-->
+                <a title="统计面板" class="websitmenu-a" href="/Statistics/Homedashboard"><i class="icon-dashbord"></i></a>
+                <!--dashbord end-->
+            </div>
+            <div class="channel" style="display: none">
+                <% if (user != null)
+                   {%>
+                <%V5.Service.Market.Services.IShopService importGoodsServices = new V5.Service.Market.Services.ShopService();
+                  List<V5.MetaData.Market.Model.Opened> list = importGoodsServices.GetImpowerOpenedForProduct(); %>
+                <%if (userRole.RoleID == 1)
+                  {%>
+                <div class="channel-platform" id="channel-current" style="display: none">
+                    <a title="进总平台" class="channel-a" href="javascript:void(0)" appcode="PLATFORM"><i
+                        class="icon-arrowgo"></i><i class="icon-platform03"></i></a>
+                </div>
+                <%--   <div class="channel-platform" name="channel-select">
+                    <a title="进总平台" class="channel-a" href="javascript:void(0)" appcode="PLATFORM"><i
+                        class="icon-arrowgo"></i><i class="icon-platform03"></i></a>
+                </div>--%>
+                <% foreach (var item in list)
+                   {
+
+                       if (item.Code == "C002")
+                       {%>
+                <li id="channel_distribution" class="shopselect-list-li"><a class="shopselect-list-a"
+                    href="javascript:void(0)" title="<%=item.Title %>" appcode="<%=item.Code %>"><i class="icon-fenxiao"></i><span>&nbsp;&nbsp;&nbsp;<%=item.Title%></span></a></li>
+                <%}
+                       else if (item.Code == "C001")
+                       {%>
+                <div class="channel-wechat" name="channel-select" style="display: none">
+                    <a href="javascript:void(0)" class="channel-a" title="<%=item.Title %>" appcode="<%=item.Code %>">
+                        <i class="icon-arrowgo"></i><i class="icon-wechat03"></i></a>
+                </div>
+                <%}
+                   }%>
+                <%int i = 0;
+                  foreach (var item in list)
+                  {
+                      if (item.Code != "C001" && item.Code != "C002")
+                      {
+                          i++;
+                          if (i == 1)
+                          {%>
+                <div class="channel-taobao">
+                    <a href="javascript:void(0)" class="channel-a" title="淘宝店"><i class="icon-arrowgo"></i>
+                        <i class="icon-taobao03"></i></a>
+                    <ul class="channel-list">
+                        <%} %>
+                        <li name="channel-select"><a title="<%=item.Title %>" appcode="<%=item.Code %>" href="javascript:void(0)"
+                            class="channel-list-a"><span class="text">
+                                <%=item.Title%></span> </a></li>
+                        <% }
+                  }
+                  if (i > 1)
+                  {%>
+                    </ul>
+                    <%}
+                    %>
+                </div>
+                <%}
+                  else//非admin用户
+                  {
+                %>
+                <%--          <div id="channel-current" flag="notAdmin">
+                    <a href="#" class="a-select" title="平台" appcode="PLATFORM"><i class="icon-pingtai"></i>
+                        <span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;平台 </span><i class="arrow"></i>
+                    </a>
+                </div>--%>
+                <%
+                      V5.Service.Security.Services.Interfaces.IRoleMenuService roleMenu = new V5.Service.Security.Services.RoleMenuService();
+                      List<string> roleMenuList = new List<string>();
+                      roleMenuList = roleMenu.GetImpowerOpenedForUser(user.RoleID);
+                %>
+                <div class="channel-platform" id="channel-current" style="display: none" flag="notAdmin">
+                    <a title="进总平台" class="channel-a" href="javascript:void(0)" appcode="PLATFORM"><i
+                        class="icon-arrowgo"></i><i class="icon-platform03"></i></a>
+                </div>
+                <%--                <%   foreach (var roleMenuItem in roleMenuList)
+                     {
+                         if (roleMenuItem == "PLATFORM")
+                         {%>
+                <div class="channel-platform" name="channel-select" style="display: none">
+                    <a title="进总平台" class="channel-a" href="javascript:void(0)" appcode="PLATFORM"><i
+                        class="icon-arrowgo"></i><i class="icon-platform03"></i></a>
+                </div>
+                <%  }
+                     }
+                %>--%>
+                <%  foreach (var item in list)
+                    {
+                        foreach (var roleMenuItem in roleMenuList)
+                        {
+                            if (item.Code == roleMenuItem)
+                            {
+                                if (item.Code == "PLATFORM")
+                                {%>
+                <div class="channel-platform" name="channel-select">
+                    <a href="javascript:void(0)" title="<%=item.Title %>" appcode="<%=item.Code %>"><i
+                        class="icon-arrowgo"></i><i class="icon-platform03"></i>
+                        <%=item.Title%></a>
+                </div>
+                <%-- <%}
+                                else if (item.Code == "C002")
+                                {%>
+                <li id="channel_distribution"><a href="javascript:void(0)" title="<%=item.Title %>"
+                    appcode="<%=item.Code %>"><i class="icon-fenxiao"></i><span>
+                        <%=item.Title%></span></a></li>--%>
+                <%}
+                                else if (item.Code == "C001")
+                                {%>
+                <div class="channel-wechat" name="channel-select">
+                    <a href="javascript:void(0)" title="<%=item.Title %>" appcode="<%=item.Code %>"><i
+                        class="icon-arrowgo"></i><i class="icon-wechat03"></i></a>
+                </div>
+                <%}
+                            }
+                        }%>
+                <%
+                        foreach (var roleMenuItem in roleMenuList)
+                        {
+                            int i = 0;
+                            if (item.Code == roleMenuItem)
+                            {
+
+                                if (item.Code != "C001" && item.Code != "C002")
+                                {
+                                    i++;
+                                    if (i == 1)
+                                    {%>
+                <div class="channel-taobao">
+                    <a href="javascript:void(0)" class="channel-a" title="淘宝店"><i class="icon-arrowgo"></i>
+                        <i class="icon-taobao03"></i></a>
+                    <ul class="channel-list">
+                        <%} %>
+                        <li name="channel-select"><a title="<%=item.Title %>" appcode="<%=item.Code %>" href="javascript:void(0)"
+                            class="channel-list-a"><span class="text">
+                                <%=item.Title%></span> </a></li>
+                        <% }
+                        }
+                        if (i > 1)
+                        {%>
+                    </ul>
+                    <%}
+                    }
+
+                    }
+                  }
+                   }
+                    %>
+                </div>
+            </div>
+        </div>
+        <!--Head End-->
+        <!--Main Start-->
+        <div class="MCM-M">
+            <!--Left Start-->
+            <div class="MCM-L ">
+                <div class="MCM-L-inshop">
+                    <a href="" target="_blank" class="in">进入分销店铺</a>
+                </div>
+                <div class="MCM-L-menu">
+                    <ul id="left_menu-small" class="MCM-L-menu-ul" style="font-size: 12px;">
+                    </ul>
+                </div>
+                <div class="MCM-L-version">
+                    <span class="text">当前版本</span><b class="number">V3.2</b>
+                </div>
+            </div>
+            <!--Left End-->
+            <script type="text/javascript">
+                $(function () {
+
+                    //兼容IE8,将span的change事件转换成click事件
+                    var browser = GetIEVersion();
+                    if (browser == "IE8") {
+                        $('#operateTip').removeAttr("onchange");
+                        $('#operateTip').change(function () {
+                            $(this).click();
+                        });
+                    }
+                })
+
+                var appCode = GetUrlAppCode();
+                if (appCode == "" || appCode == "PLATFORM" || appCode == "C001") {
+                    $(".MCM-L-inshop").hide();
+                } else if (appCode == "C002") {
+                    $.ajax({
+                        url: "../../Navigate/GetDrpShopUrl",
+                        type: "get",
+                        success: function (res) {
+                            $(".MCM-L-inshop a").attr("href", res);
+                        }
+                    })
+                } else {
+                    $.ajax({
+                        url: "../../ImportGoods/GetThisChannelTaobaoSid",
+                        type: "get",
+                        data: { "channelCode": appCode },
+                        success: function (res) {
+                            if (res != undefined && res != null) {
+                                res = res.split('-');
+                                $(".MCM-L-inshop a").text("进入" + res[1]).attr("href", "http://shop" + res[0] + ".taobao.com/");
+                            }
+                        }
+                    })
+                }
+
+                //不是admin用户登录，默认选中该用户具有权限的第一个平台
+                if ($("#channel-current").attr("flag") == "notAdmin") {
+                    $("#channel-current a:first").attr("Title", $("div[name='channel-select']:first a").attr("Title"));
+                    $("#channel-current a:first").attr("appcode", $("div[name='channel-select']:first a").attr("appcode"));
+                    $("#channel-current a:first i:first").attr("class", $("div[name='channel-select']:first a i:first").attr("class"));
+                    $("#channel-current a:first span").text($("#div[name='channel-select']:first a span").text());
+                    if ($("#channel-select li:first a").attr("appcode") != "PLATFORM") {
+                        $(".shopselect").removeClass("shopselect2");
+                        $(".shopselect").addClass("shopselect1");
+                        $("#channel-current a:first>i").css("visibility", "visible");
+                        $("#channel-current a:first>span").css("visibility", "visible");
+
+                    }
+                }
+
+                var overTimeFlag = 0;
+                //平台选择点击事件
+                $("#channel-current").click(function () {
+                    var appCode = $("#channel-current a").attr("appCode");
+                    var roleID = '<%=user.RoleID %>';
+                    var userName = '<%=user.UserCode %>';
+                    if ('<%=user.RoleID %>'=='1') {
+                        roleID = 99999;
+                    }
+                    //根据appCode去找它对应的菜单项（是左侧小菜单，根据左侧小菜单找出大菜单）
+                    $.ajax({
+                        url: "../../Navigate/GetParentMenuByRoleIDAndAppCode",
+                        type: "post",
+                        data: { "roleID": roleID, "appCode": appCode },
+                        async: false,
+                        success: function (res) {
+                            if (typeof res == "string") {
+                                $("#allnav ul").text(""); //先清空大菜单内容
+                                var jsonRes = JSON.parse(res);
+                                for (var i = 0; i < jsonRes.length; i++) {
+                                    var liItem = $("<li><a id=" + jsonRes[i].ID + " href='javascript:void(0);' navUrl=" + jsonRes[i].MenuUrl + " onclick='ClickThisMenu(event)'>" + jsonRes[i].MenuName + "</a></li>");
+                                    $("#allnav ul").append(liItem);
+                                }
+                            } else {
+                                alert("未登录或登录已过期,请重新登录");
+                                window.location.href = "../../Login/Login";
+                                overTimeFlag = 1;
+                            }
+                        },
+                        error: function () {
+                            //alert("读取大菜单数据出错");
+                        }
+                    })
+
+                })
+                //从cookie中读取信息（当前appCode，用户RoleID，当前点击的大菜单ID）
+                var currentAppCode = "";
+                var currentRoleID = "";
+                var currentParentMenuID = "";
+                var currentMenuName = "";
+                var currentCookie = document.cookie;
+                var currentCookies = currentCookie.split(';');
+                var regCookie = /appCode=/g;
+                if (regCookie.test(currentCookie)) {//如果Cookie包含“appCode=”，表示存在相关点击的记录，不是第一次进入系统
+                    var currentCookiesNew = new Array();
+                    for (var i = 0; i < currentCookies.length; i++) {
+                        currentCookies[i] = currentCookies[i].replace(/^\s*/g, "").replace(/\s*$/g, "");
+                        currentCookiesNew.push(currentCookies[i]);
+                    }
+
+                    for (var i = 0; i < currentCookiesNew.length; i++) {
+                        var currentCookiesNewKeyValue = currentCookiesNew[i].split('=');
+                        if (currentCookiesNewKeyValue[0] == "appCode") {
+                            currentAppCode = currentCookiesNewKeyValue[1];
+                        } else if (currentCookiesNewKeyValue[0] == "roleID") {
+                            currentRoleID = currentCookiesNewKeyValue[1];
+                        } else if (currentCookiesNewKeyValue[0] == "parentMenuID") {
+                            currentParentMenuID = currentCookiesNewKeyValue[1];
+                        } else if (currentCookiesNewKeyValue[0] == "currentMenuName") {
+                            currentMenuName = currentCookiesNewKeyValue[1];
+                        }
+                    }
+
+                    if (currentRoleID == '<%=user.RoleID %>' || '<%=userRole.RoleID %>' == "1") {//cookie中存的RoleID与当前登录的用户RoleID不一致的话，说明是另外一个用户登录进来，不能使用cookie中存的数据，执行下面的else里面的代码
+                        $("[name='channel-select']").each(function () {//记住上次选的是哪个平台
+                            if ($("a", $(this)).attr("appcode") == currentAppCode) {
+                                $("#channel-current a:first").attr("Title", $("a", $(this)).attr("Title"));
+                                $("#channel-current a:first").attr("appcode", $("a", $(this)).attr("appcode"));
+                                $("#channel-current a:first i:first").attr("class", $("a i:first", $(this)).attr("class"));
+                                $("#channel-current a:first span").text($("a span", $(this)).text());
+                                if (currentAppCode != "PLATFORM") {
+                                    $(".shopselect").removeClass("shopselect2");
+                                    $(".shopselect").addClass("shopselect1");
+                                    $("#channel-current a:first>i").css("visibility", "visible");
+                                    $("#channel-current a:first>span").css("visibility", "visible");
+                                }
+                                if (currentAppCode == "C001") {
+                                    $("#logo").attr("src", "http://html.v5portal.com/mcm/content/images/logoImg.png");
+                                } else {
+                                    $("#logo").attr("src", "http://html.v5portal.com/mcm/content/images/logoImg-mcm.png");
+                                }
+                                if (currentAppCode != "PLATFORM" && currentAppCode != "C001") {
+                                    if ($(this).parent().children().length == 1) {
+                                        $(this).parent().parent().hide();
+                                    } else {
+                                        $(this).hide();
+                                    }
+
+                                } else {
+                                    $(this).hide();
+                                }
+                            } else {
+                                $(this).show();
+
+                            }
+                        })
+
+                    } else {
+                        currentAppCode = $("#channel-current a").attr("appCode");
+                        currentRoleID = '<%=user.RoleID %>';
+                        var userName = '<%=user.UserCode %>';
+                        if ('<%=user.RoleID %>' == '1') {
+                            currentRoleID = 99999;
+                        }
+                        $("#channel-current").click(); //页面加载时自动触发点击事件
+                        currentParentMenuID = $("#allnav li:first a").attr("id");
+                    }
+                } else {
+
+                    currentAppCode = $("#channel-current a").attr("appCode");
+                    currentRoleID = '<%=user.RoleID %>';
+                    var userName = '<%=user.UserCode %>';
+                    if ('<%=user.RoleID %>' == '1') {
+                        currentRoleID = 99999;
+                    }
+                    $("#channel-current").click(); //页面加载时自动触发点击事件
+                    currentParentMenuID = $("#allnav li:first a").attr("id");
+                }
+
+
+                //根据用户具有权限的菜单和大菜单，匹配出当前应该加载在左侧的菜单
+                function GetSubMenu(currentRoleID, currentAppCode, currentParentMenuID) {
+                    if (currentParentMenuID != "" && currentParentMenuID != undefined) {
+                        $.ajax({
+                            url: "../../Navigate/GetLeftMenu",
+                            type: "post",
+                            data: { "roleID": currentRoleID, "appCode": currentAppCode, "parentID": currentParentMenuID },
+                            async: false,
+                            success: function (res) {
+                                $("#left_menu-small").text("");
+                                if (typeof res == "string") {
+                                    var jsonRes = JSON.parse(res);
+                                    if (jsonRes.Code == null) {
+                                        var jsonResContent = JSON.parse(jsonRes.Content);
+                                        for (var i = 0; i < jsonResContent.length; i++) {
+                                            var liItem = $("<li><a id=" + jsonResContent[i].ID + " href='javascript:void(0);' navUrl=" + jsonResContent[i].MenuUrl + " onclick='ClickThisSubMenu(event)'>" + jsonResContent[i].MenuName + "</a></li>");
+                                            $("#left_menu-small").append(liItem);
+                                        }
+                                    } else {
+                                        alert("未登录或登录已过期,请重新登录");
+                                        window.location.href = "../../Login/Login";
+                                    }
+                                } else {
+                                    if (overTimeFlag == 0) {
+                                        alert("未登录或登录已过期,请重新登录");
+                                        window.location.href = "../../Login/Login";
+                                    }
+                                }
+                            },
+                            error: function () {
+                                //alert("读取左侧菜单数据出错");
+                            }
+                        })
+                    }
+                }
+
+                GetSubMenu(currentRoleID, currentAppCode, currentParentMenuID);
+                //            $("#allnav ul li:first a").click();
+                //            $("#left_menu-small li:first a").click();
+                //注册大菜单的点击事件
+                var eventIE8;
+                function ClickThisMenu(event) {
+                    event = event ? event : window.event;
+                    var eventSrc = event.srcElement ? event.srcElement : event.target;
+                    eventIE8 = $(eventSrc);
+
+                    var appCode = $("#channel-current a").attr("appCode");
+                    var roleID = '<%=user.RoleID %>';
+                    var userName = '<%=user.UserCode %>';
+                    if ('<%=user.RoleID %>' == '1') {
+                        roleID = 99999;
+                    }
+                    var parentMenuID = $(eventSrc).attr("id");
+                    var navText = $(eventSrc).text();
+                    if (parentMenuID == undefined || parentMenuID == null) {//兼容IE8的$(eventSrc)识别错误,取第一个
+                        parentMenuID = $("#allnav li:first a").attr("id");
+                        navText = $("#allnav li:first a").text();
+                    }
+
+                    document.cookie = "appCode=" + appCode + ";path=/";
+                    document.cookie = "roleID=" + roleID + ";path=/";
+                    document.cookie = "parentMenuID=" + parentMenuID + ";path=/";
+                    document.cookie = "currentMenuName=" + navText + ";path=/";
+
+
+                    GetSubMenu(roleID, appCode, parentMenuID);
+
+                    if ($(eventSrc).text() == "微商品") {
+                        window.location.href = "../../Product/index?appCode=PLATFORM&MenuCode=C125";
+                    } else {
+                        $("#left_menu-small li:first a").click();
+                    }
+                }
+
+                //点击这个左侧小菜单事件
+                function ClickThisSubMenu(event) {
+                    event = event ? event : window.event;
+                    var eventSrc = event.srcElement ? event.srcElement : event.target;
+
+                    var appCode = $("#channel-current a").attr("appCode");
+
+                    var menuUrl = $(eventSrc).attr("navUrl");
+                    //兼容IE8的$(eventSrc)识别错误,取第一个, eventIE8是大菜单点击时赋的值，在IE8下这个事件源才会与本方法内的$(eventSrc)是一个对象
+                    if (menuUrl == undefined || (eventIE8 != undefined && $(eventSrc).text() == eventIE8.text())) {
+                        menuUrl = $("#left_menu-small li:first a").attr("navUrl");
+                    }
+
+                    var menuUrlParts = menuUrl.split('?');
+                    if (menuUrlParts.length > 1) {//原本已经带参数
+                        menuUrl = menuUrlParts[0] + "?appCode=" + appCode + "&" + menuUrlParts[1];
+                    } else {
+                        menuUrl = menuUrl + "?appCode=" + appCode;
+                    }
+
+                    var parameter = menuUrl.substring(menuUrl.indexOf('?') + 1);
+                    parameter = parameter.split('&');
+                    var reg = /MenuCode=/g;
+                    var menuCode = "";
+                    for (var i = 0; i < parameter.length; i++) {
+                        reg.lastIndex = 0;
+                        if (reg.test(parameter[i])) {
+                            menuCode = parameter[i].replace("MenuCode=", "").split('#')[0];
+                            break;
+                        }
+                    }
+                    var userName = '<%=user.UserCode %>';
+                    document.cookie = "currentUrlInfo=" + userName + "|" + appCode + "|" + menuCode + ";path=/";
+
+                    window.location.href = menuUrl;
+
+                }
+
+                //平台切换事件
+                $("[name='channel-select']").each(function () {
+                    $(this).click(function () {
+                        if (!$(this).hasClass("shopselect4")) {
+                            $("#channel-current a:first").attr("Title", $("a", $(this)).attr("Title"));
+                            $("#channel-current a:first").attr("appcode", $("a", $(this)).attr("appcode"));
+                            $("#channel-current a:first i:first").attr("class", $("a i:first", $(this)).attr("class"));
+                            $("#channel-current a:first span").text($("a span", $(this)).text());
+                            //                        $("div[name='channel-select']").show();
+                            //                        $(this).hide();
+                            $(".shopselect").removeClass("shopselect2");
+                            $(".shopselect").addClass("shopselect1");
+                            //$("#channel-current a:first>i").css("visibility", "visible");
+                            //$("#channel-current a:first>span").css("visibility", "visible");
+
+                            $("#channel-current").click();
+                        } else {
+                            $("#channel-current a:first").attr("Title", $("a", $(this)).attr("Title"));
+                            $("#channel-current a:first").attr("appcode", $("a", $(this)).attr("appcode"));
+                            $("#channel-current a:first i:first").attr("class", $("a i:first", $(this)).attr("class"));
+                            $("#channel-current a:first span").text($("a span", $(this)).text());
+
+                            $(".shopselect").removeClass("shopselect1");
+                            $(".shopselect").addClass("shopselect2");
+                            //$("#channel-current a:first>i").css("visibility", "hidden");
+                            //$("#channel-current a:first>span").css("visibility", "hidden");
+
+                            $("#channel-current").click();
+                        }
+                        var flag = false;
+                        $("#allnav ul li a").each(function () {
+                            if ($(this).text() == currentMenuName) {
+                                flag = true;
+                                $(this).click();
+                            }
+                        })
+                        if (flag == false) {
+                            $("#allnav ul li:first a").click();
+                        }
+                    })
+                })
+
+                $("#channel-current").click(); //页面加载时自动触发点击事件
+
+                var flag = false;
+                $("#allnav ul li").removeClass("current");
+                $("#allnav ul li a").each(function () {
+                    if ($(this).text() == currentMenuName) {
+                        flag = true;
+                        $(this).parent().addClass("current");
+                        return;
+                    }
+                })
+                if (flag == false) {
+                    $("#allnav ul li:first").addClass("current");
+                }
+
+                var url = window.location.href;
+                var parameter = url.substring(url.indexOf('?') + 1);
+                parameter = parameter.split('&');
+                var reg = /MenuCode=/g;
+                var menuCode = "";
+                for (var i = 0; i < parameter.length; i++) {
+                    reg.lastIndex = 0;
+                    if (reg.test(parameter[i])) {
+                        menuCode = parameter[i].replace("MenuCode=", "").split('#')[0];
+                        break;
+                    }
+                }
+
+                $("#left_menu-small li a").each(function () {
+                    if ("C" + $(this).attr("id") == menuCode) {
+                        $(this).parent().addClass("current");
+                    }
+                })
+
+                $(".shopselect ul li").hover(function () {
+                    if ($(this).hasClass("shopselect3")) {
+                        $(this).removeClass("shopselect3");
+                        $(this).addClass("shopselect4");
+                    } else {
+                        $(this).addClass("shopselect5")
+                    }
+                }, function () {
+                    if ($(this).hasClass("shopselect4")) {
+                        $(this).removeClass("shopselect4");
+                        $(this).addClass("shopselect3");
+                    } else {
+                        $(this).removeClass("shopselect5")
+                    }
+                })
+
+                function ClearCookie() {
+                    var expires = new Date();
+                    expires.setTime(expires.getTime() - 1000);
+                    document.cookie = "appCode='';path=/;expires=" + expires.toGMTString() + "";
+                    document.cookie = "roleID='';path=/;expires=" + expires.toGMTString() + "";
+                    document.cookie = "parentMenuID='';path=/;expires=" + expires.toGMTString() + "";
+                    document.cookie = "currentMenuName='';path=/;expires=" + expires.toGMTString() + "";
+                }
+
+
+                // 系统注销菜单的控制
+                var closetimer = 0;
+                function exitSystemOver() {
+                    cancelColseMenu();
+                    $("#exit_System").css("display", "block");
+                };
+
+                function exitSystemOut() {
+                    closetimer = window.setTimeout(mclose, 600);
+                };
+
+                function cancelColseMenu() {
+                    window.clearTimeout(closetimer);
+                    closetimer = null;
+                };
+
+                function mclose() {
+                    $("#exit_System").css("display", "none");
+                }
+                //            $(function () {//为了兼容多种浏览器，所有的上传图片按钮点击事件触发<input type="file"/>的点击事件
+                //                $(".btn-pic").click(function () {
+                //                    $("input[type=file]", $(this).parent()).click();
+                //                })
+                //            })
+
+            </script>
+            <div class="MCM-R">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!--Right End-->
+            <!--确认信息的公用弹层 开始-->
+            <div id='dvConfirm' style='display: none;'>
+                <div class='content' style='min-width: 300px; min-height: 50px;'>
+                    <div class='mod-form'>
+                        <div class='con style0alert'>
+                            <span id='confirmMessage'></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--确认信息的公用弹层 结束-->
+        </div>
+        <!--Main End-->
+</body>
+</html>
